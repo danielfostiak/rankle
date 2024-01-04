@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import List from "./components/List";
+import Response from "./components/Response";
 
 const dummyItems = [
   {
@@ -67,11 +68,29 @@ const dummyItems = [
   },
 ];
 
+const correctOrder = [...dummyItems].sort((a, b) => a.height - b.height);
+
 function Game() {
   const [items, setItems] = useState(dummyItems);
+  const [submitted, setSubmitted] = useState(false);
+  const [correctItemsCount, setCorrectItemsCount] = useState(0);
+
+  function handleSubmit() {
+    const count = items.reduce((acc, item, index) => {
+      if (item.id === correctOrder[index].id) {
+        return acc + 1;
+      }
+      return acc;
+    }, 0);
+    setCorrectItemsCount(count);
+    setSubmitted(true);
+  }
+
   return (
     <div>
       <List items={items} setItems={setItems} />
+      {submitted && <Response correctItemsCount={correctItemsCount} />}
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
 }

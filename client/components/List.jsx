@@ -2,6 +2,7 @@
 
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import Card from "./Card";
 
 function List({ items, setItems }) {
   const handleOnDragEnd = (result) => {
@@ -14,28 +15,34 @@ function List({ items, setItems }) {
   };
 
   return (
-    <DragDropContext onDragEnd={handleOnDragEnd}>
-      <Droppable droppableId="items">
-        {(provided) => (
-          <ul {...provided.droppableProps} ref={provided.innerRef}>
-            {items.map((item, index) => (
-              <Draggable key={item.id} draggableId={item.id} index={index}>
-                {(provided) => (
-                  <li
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                    ref={provided.innerRef}
-                  >
-                    <p>{item.name}</p>
-                  </li>
-                )}
-              </Draggable>
-            ))}
-            {provided.placeholder}
-          </ul>
-        )}
-      </Droppable>
-    </DragDropContext>
+    <div className="flex justify-center">
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        <Droppable droppableId="items" direction="horizontal">
+          {(provided) => (
+            <ul
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              className="flex overflow-x-auto"
+            >
+              {items.map((item, index) => (
+                <Draggable key={item.id} draggableId={item.id} index={index}>
+                  {(provided) => (
+                    <li
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      ref={provided.innerRef}
+                    >
+                      <Card item={item} />
+                    </li>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </ul>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </div>
   );
 }
 
