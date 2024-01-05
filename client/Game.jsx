@@ -73,6 +73,7 @@ const correctOrder = [...dummyItems].sort((a, b) => a.height - b.height);
 function Game() {
   const [items, setItems] = useState(dummyItems);
   const [submitted, setSubmitted] = useState(false);
+  const [submissions, setSumbissions] = useState(0);
   const [correctItemsCount, setCorrectItemsCount] = useState(0);
 
   function handleSubmit() {
@@ -82,6 +83,7 @@ function Game() {
       }
       return acc;
     }, 0);
+    setSumbissions(submissions + 1);
     setCorrectItemsCount(count);
     setSubmitted(true);
   }
@@ -89,8 +91,15 @@ function Game() {
   return (
     <div>
       <List items={items} setItems={setItems} />
-      {submitted && <Response correctItemsCount={correctItemsCount} />}
-      <button onClick={handleSubmit}>Submit</button>
+      {submitted && (
+        <Response
+          correctItemsCount={correctItemsCount}
+          submissions={submissions}
+        />
+      )}
+      <button onClick={handleSubmit} className="flex justify-center">
+        Submit
+      </button>
     </div>
   );
 }
