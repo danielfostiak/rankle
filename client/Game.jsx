@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import List from "./components/List";
 import Response from "./components/Response";
-import { startWindToast } from "@mariojgt/wind-notify/packages/index.js";
+// import { startWindToast } from "@mariojgt/wind-notify/packages/index.js";
 
 const dummyItems = [
   {
@@ -97,7 +97,7 @@ function Game() {
     setSumbissions(submissions + 1);
     setCorrectItemsCount(count);
     setSubmitted(true);
-    startWindToast("Good stuff", "well done bruvva", "success", 5, "top");
+    // startWindToast("Good stuff", "well done bruvva", "success", 5, "top");
     // if (count === 10) {
     //   setPlaying(false);
     // }
