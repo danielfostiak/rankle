@@ -3,67 +3,77 @@
 import React, { useState } from "react";
 import List from "./components/List";
 import Response from "./components/Response";
+import { startWindToast } from "@mariojgt/wind-notify/packages/index.js";
 
 const dummyItems = [
   {
     id: "abcd",
     name: "Tom Hanks",
-    photoUrl: "https://example.com/tom-hanks.jpg",
-    height: 183,
+    photoUrl:
+      "https://hips.hearstapps.com/hmg-prod/images/gettyimages-1257937597.jpg",
+    height: 184,
   },
   {
     id: "efgh",
     name: "Jennifer Aniston",
-    photoUrl: "https://example.com/jennifer-aniston.jpg",
+    photoUrl:
+      "https://m.media-amazon.com/images/M/MV5BNjk1MjIxNjUxNF5BMl5BanBnXkFtZTcwODk2NzM4Mg@@._V1_FMjpg_UX1000_.jpg",
     height: 164,
   },
   {
     id: "ijkl",
     name: "Leonardo DiCaprio",
-    photoUrl: "https://example.com/leonardo-dicaprio.jpg",
+    photoUrl:
+      "https://cdn.britannica.com/65/227665-050-D74A477E/American-actor-Leonardo-DiCaprio-2016.jpg",
     height: 183,
   },
-  // Add more celebrity objects here
   {
     id: "mnop",
     name: "Brad Pitt",
-    photoUrl: "https://example.com/brad-pitt.jpg",
+    photoUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Brad_Pitt_2019_by_Glenn_Francis.jpg/1200px-Brad_Pitt_2019_by_Glenn_Francis.jpg",
     height: 180,
   },
   {
     id: "qrst",
     name: "Angelina Jolie",
-    photoUrl: "https://example.com/angelina-jolie.jpg",
+    photoUrl:
+      "https://m.media-amazon.com/images/M/MV5BODg3MzYwMjE4N15BMl5BanBnXkFtZTcwMjU5NzAzNw@@._V1_.jpg",
     height: 169,
   },
   {
     id: "uvwx",
     name: "Johnny Depp",
-    photoUrl: "https://example.com/johnny-depp.jpg",
+    photoUrl:
+      "https://m.media-amazon.com/images/M/MV5BOTBhMTI1NDQtYmU4Mi00MjYyLTk5MjEtZjllMDkxOWY3ZGRhXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_.jpg",
     height: 178,
   },
   {
     id: "yzab",
     name: "Scarlett Johansson",
-    photoUrl: "https://example.com/scarlett-johansson.jpg",
+    photoUrl:
+      "https://hips.hearstapps.com/hmg-prod/images/scarlett-johansson-attends-the-premiere-of-illuminations-news-photo-1639390369.jpg",
     height: 160,
   },
   {
     id: "cdef",
     name: "Robert Downey Jr.",
-    photoUrl: "https://example.com/robert-downey-jr.jpg",
+    photoUrl:
+      "https://m.media-amazon.com/images/M/MV5BNzg1MTUyNDYxOF5BMl5BanBnXkFtZTgwNTQ4MTE2MjE@._V1_.jpg",
     height: 174,
   },
   {
     id: "ghij",
     name: "Emma Watson",
-    photoUrl: "https://example.com/emma-watson.jpg",
+    photoUrl:
+      "https://cdn.britannica.com/29/215029-050-84AA8F39/British-actress-Emma-Watson-2017.jpg",
     height: 165,
   },
   {
     id: "klmn",
     name: "Chris Hemsworth",
-    photoUrl: "https://example.com/chris-hemsworth.jpg",
+    photoUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt6MlkOymlKkXd-Mf85p1bnAabdBMBFALI_0ubsAn64g&s",
     height: 191,
   },
 ];
@@ -74,6 +84,7 @@ function Game() {
   const [items, setItems] = useState(dummyItems);
   const [submitted, setSubmitted] = useState(false);
   const [submissions, setSumbissions] = useState(0);
+  const [playing, setPlaying] = useState(true);
   const [correctItemsCount, setCorrectItemsCount] = useState(0);
 
   function handleSubmit() {
@@ -86,6 +97,10 @@ function Game() {
     setSumbissions(submissions + 1);
     setCorrectItemsCount(count);
     setSubmitted(true);
+    startWindToast("Good stuff", "well done bruvva", "success", 5, "top");
+    // if (count === 10) {
+    //   setPlaying(false);
+    // }
   }
 
   return (
@@ -97,9 +112,7 @@ function Game() {
           submissions={submissions}
         />
       )}
-      <button onClick={handleSubmit} className="flex justify-center">
-        Submit
-      </button>
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
 }

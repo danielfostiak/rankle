@@ -16,8 +16,8 @@ function formatNumberWithSuffix(number) {
 
 const Response = ({ correctItemsCount, submissions }) => {
   return (
-    <div className="modal flex justify-center">
-      <div className="modal-content">
+    <div className="flex justify-center">
+      <div className="">
         <p>
           You got {correctItemsCount} items in the correct order. This was your{" "}
           {formatNumberWithSuffix(submissions)} guess

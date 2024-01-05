@@ -1,14 +1,18 @@
 import React from "react";
 
 const Card = ({ item }) => {
-  const { name, photoURL } = item;
+  const { name, photoUrl } = item;
   return (
     <div
-      className="card w-20 h-20 bg-blue-500 mx-2"
+      className="card bg-neutral shadow-xl mx-2 h-full w-40"
       style={{ userSelect: "none" }}
     >
-      {/* <img src={"photoURL"} alt={name} /> */}
-      <h2>{name}</h2>
+      <figure className="w-full h-full">
+        <img className="w-full h-full object-cover" src={photoUrl}></img>
+      </figure>
+      <div className="card-body">
+        <h2 className="card-title">{name}</h2>
+      </div>
     </div>
   );
 };
