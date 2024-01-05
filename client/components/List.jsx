@@ -15,14 +15,14 @@ function List({ items, setItems }) {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="mx-auto">
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId="items" direction="horizontal">
           {(provided) => (
             <ul
               {...provided.droppableProps}
               ref={provided.innerRef}
-              className="flex overflow-x-auto"
+              className="flex list-none p-0 m-0"
             >
               {items.map((item, index) => (
                 <Draggable key={item.id} draggableId={item.id} index={index}>
@@ -31,6 +31,7 @@ function List({ items, setItems }) {
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       ref={provided.innerRef}
+                      className="flex text-center max-w-xs m-1"
                     >
                       <Card item={item} />
                     </li>

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import List from "./components/List";
+import Nav from "./components/Nav";
 import Response from "./components/Response";
 // import { startWindToast } from "@mariojgt/wind-notify/packages/index.js";
 
@@ -50,7 +51,7 @@ const dummyItems = [
   },
   {
     id: "yzab",
-    name: "Scarlett Johansson",
+    name: "Scarlett Johannson",
     photoUrl:
       "https://hips.hearstapps.com/hmg-prod/images/scarlett-johansson-attends-the-premiere-of-illuminations-news-photo-1639390369.jpg",
     height: 160,
@@ -104,7 +105,8 @@ function Game() {
   }
 
   return (
-    <div>
+    <div className="md:container md:mx-auto md:w-5/6">
+      <Nav />
       <List items={items} setItems={setItems} />
       {submitted && (
         <Response
