@@ -8,10 +8,10 @@ const Card = ({ item }) => {
       style={{ userSelect: "none" }}
     >
       <figure className="max-w-full h-auto">
-        <img className="object-cover max-w-full h-auto" src={photoUrl}></img>
+        <img className=" object-fit" src={photoUrl}></img>
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{name}</h2>
+        <h2 className="card-title text-sm">{name}</h2>
       </div>
     </div>
   );
